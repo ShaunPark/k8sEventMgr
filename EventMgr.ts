@@ -1,6 +1,5 @@
 import * as k8s from "@kubernetes/client-node"
-import { CoreV1Event, V1NodeCondition, V1NodeStatus } from "@kubernetes/client-node";
-import { exit } from "process";
+import { CoreV1Event } from "@kubernetes/client-node";
 import { parse } from "ts-command-line-args"
 
 class EventMgr {
