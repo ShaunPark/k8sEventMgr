@@ -1,0 +1,11 @@
+{
+    "name": "k8seventmgr",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/EventMgr.js",
+    "dependencies": {
+      "@kubernetes/client-node": "^0.15.0",
+      "request": "^2.88.2",
+      "ts-command-line-args": "^2.1.0"
+    }
+  }
