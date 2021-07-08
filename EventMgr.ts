@@ -54,4 +54,5 @@ const { namespace, reason, message, node } = parse<Args>(
 const event:CoreV1Event = new CoreV1Event();
 event.message = message;
 event.reason = reason;
+event.metadata.name = reason
 new EventMgr().run(namespace, event, node)
