@@ -16,7 +16,7 @@ class EventMgr {
         try {
             const node = await this.cli.readNode(nodename,undefined,undefined)
             body.involvedObject = {kind: "Node", name: nodename, uid: node.body.metadata?.uid};
-            this.cli.createNamespacedEvent(namespace, body, undefined, undefined, undefined, undefined)
+            const result = await this.cli.createNamespacedEvent(namespace, body, undefined, undefined, undefined, undefined)
             } catch(err) {
                 console.error(err)
             }
