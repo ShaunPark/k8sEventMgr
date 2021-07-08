@@ -56,4 +56,6 @@ event.message = message;
 event.reason = reason;
 event.metadata = new V1ObjectMeta()
 event.metadata.name = reason
+event.type = "Normal"
+event.lastTimestamp = new Date()
 new EventMgr().run(namespace, event, node)
