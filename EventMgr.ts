@@ -13,9 +13,13 @@ class EventMgr {
     }
 
     async run(namespace:string, body:CoreV1Event, nodename:string) {
-        const node = await this.cli.readNode(nodename,undefined,undefined)
-        body.involvedObject = {kind: "Node", name: nodename, uid: node.body.metadata?.uid};
-        this.cli.createNamespacedEvent(namespace, body, undefined, undefined, undefined, undefined)
+        try {
+            const node = await this.cli.readNode(nodename,undefined,undefined)
+            body.involvedObject = {kind: "Node", name: nodename, uid: node.body.metadata?.uid};
+            this.cli.createNamespacedEvent(namespace, body, undefined, undefined, undefined, undefined)
+            } catch(err) {
+                console.error(err)
+            }
     }
 }
 
