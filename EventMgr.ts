@@ -1,5 +1,5 @@
 import * as k8s from "@kubernetes/client-node"
-import { CoreV1Event, V1ObjectMeta } from "@kubernetes/client-node";
+import { CoreV1Event, V1EventSource, V1ObjectMeta } from "@kubernetes/client-node";
 import { parse } from "ts-command-line-args"
 
 class EventMgr {
@@ -55,7 +55,9 @@ const event:CoreV1Event = new CoreV1Event();
 event.message = message;
 event.reason = reason;
 event.metadata = new V1ObjectMeta()
-event.metadata.name = reason
+event.metadata.name = node + "." + Date.now()
+event.source = new V1EventSource()
+event.source.component = "eventmgr"
 event.type = "Normal"
 event.lastTimestamp = new Date()
 new EventMgr().run(namespace, event, node)
